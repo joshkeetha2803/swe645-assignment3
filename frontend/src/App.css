@@ -1,0 +1,166 @@
+/*
+  Team Members: Joshitha Keetha (G01575681) & Bhuvitha Tummala (G01576792)
+  Course: SWE 645
+  Purpose: This is the Global GMU Green and Gold stylesheet for the web application.
+*/
+
+:root {
+  --gmu-green: #006633;
+  --gmu-gold: #FFCC00;
+  --gmu-dark-green: #004d26;
+  --bg-light: #f4f4f4;
+  --text-color: #333333;
+  --card-bg: #ffffff;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Banner */
+.header-banner {
+  background-color: var(--gmu-green);
+  color: #ffffff;
+  text-align: center;
+  padding: 25px 10px;
+}
+
+.header-banner h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.header-banner p {
+  margin: 5px 0 0 0;
+  font-size: 1.1em;
+  color: var(--gmu-gold);
+}
+
+/* Page Layout Container */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 30px auto;
+  gap: 20px;
+  padding: 0 15px;
+}
+
+.left-column {
+  flex: 1;
+  min-width: 280px;
+}
+
+.right-column {
+  flex: 2;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card Styling */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card h2, .card h3 {
+  color: var(--gmu-green);
+  margin-top: 0;
+  border-bottom: 2px solid var(--gmu-gold);
+  padding-bottom: 5px;
+}
+
+/* Buttons with GMU Hover Effect */
+.gmu-btn {
+  display: inline-block;
+  background-color: var(--gmu-green);
+  color: #ffffff;
+  padding: 10px 18px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  border: 2px solid var(--gmu-green);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.gmu-btn:hover {
+  background-color: var(--gmu-gold);
+  color: var(--gmu-green);
+  border-color: var(--gmu-gold);
+}
+
+.gmu-btn-cancel {
+  background-color: #d9534f;
+  color: #ffffff;
+  border: 2px solid #d9534f;
+}
+
+.gmu-btn-cancel:hover {
+  background-color: #c9302c;
+  border-color: #c9302c;
+  color: #ffffff;
+}
+
+/* Tech Badges */
+.badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge {
+  background-color: var(--gmu-gold);
+  color: var(--gmu-green);
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 0.9em;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Form Controls */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--gmu-green);
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  border-color: var(--gmu-green);
+  outline: none;
+}
+
+.checkbox-group, .radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.checkbox-group label, .radio-group label {
+  font-weight: normal;
+  color: var(--text-color);
+  cursor: pointer;
+}
