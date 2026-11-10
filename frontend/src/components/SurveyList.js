@@ -6,7 +6,8 @@ export default function SurveyList() {
   const [surveys, setSurveys] = useState([]);
 
   const fetchSurveys = () => {
-    axios.get('http://52.86.110.98:8000/api/surveys')
+    // Fetch all records from backend port 30081
+    axios.get('http://52.86.110.98:30081/api/surveys')
       .then(res => setSurveys(res.data))
       .catch(err => console.error("Error fetching surveys:", err));
   };
@@ -17,7 +18,8 @@ export default function SurveyList() {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this survey record?")) {
-      axios.delete(`http://52.86.110.98:8000/api/surveys/${id}`)
+      // Delete record on backend port 30081
+      axios.delete(`http://52.86.110.98:30081/api/surveys/${id}`)
         .then(() => {
           alert("Survey deleted successfully.");
           fetchSurveys();

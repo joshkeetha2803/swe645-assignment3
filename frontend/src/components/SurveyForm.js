@@ -29,9 +29,9 @@ export default function SurveyForm() {
       firstNameRef.current.focus();
     }
 
-    // If editing an existing record
+    // If editing an existing record, fetch from backend port 30081
     if (id) {
-      axios.get(`http://52.86.110.98:8000/api/surveys/${id}`)
+      axios.get(`http://52.86.110.98:30081/api/surveys/${id}`)
         .then(res => setFormData(res.data))
         .catch(err => console.error("Error loading survey:", err));
     }
@@ -83,14 +83,16 @@ export default function SurveyForm() {
     };
 
     if (id) {
-      axios.put(`http://52.86.110.98:8000/api/surveys/${id}`, payload)
+      // Update existing record on port 30081
+      axios.put(`http://52.86.110.98:30081/api/surveys/${id}`, payload)
         .then(() => {
           alert("Survey updated successfully!");
           navigate('/surveys');
         })
         .catch(err => alert("Error updating survey: " + err.message));
     } else {
-      axios.post('http://52.86.110.98:8000/api/surveys', payload)
+      // Create new record on port 30081
+      axios.post('http://52.86.110.98:30081/api/surveys', payload)
         .then(() => {
           alert("Survey submitted successfully!");
           navigate('/surveys');
