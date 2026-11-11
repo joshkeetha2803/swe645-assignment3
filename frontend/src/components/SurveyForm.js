@@ -17,7 +17,6 @@ export default function SurveyForm() {
       axios.get(`http://52.86.110.98:30081/api/surveys/${id}`)
         .then(res => {
           const fetchedData = res.data;
-          // FIX: Convert the database string back into an array for the checkboxes
           if (typeof fetchedData.likedMost === 'string') {
             fetchedData.likedMost = fetchedData.likedMost 
               ? fetchedData.likedMost.split(',').map(item => item.trim()) 
@@ -102,35 +101,35 @@ export default function SurveyForm() {
           <form onSubmit={handleSubmit} className="row g-3">
             <div className="col-md-6">
               <label className="form-label fw-bold">First Name <span className="text-danger">*</span></label>
-              <input ref={firstNameRef} type="text" className="form-control" name="firstName" value={formData.firstName} onChange={handleChange} required />
+              <input ref={firstNameRef} type="text" className="form-control" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="e.g. John" required />
             </div>
             <div className="col-md-6">
               <label className="form-label fw-bold">Last Name <span className="text-danger">*</span></label>
-              <input type="text" className="form-control" name="lastName" value={formData.lastName} onChange={handleChange} required />
+              <input type="text" className="form-control" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="e.g. Doe" required />
             </div>
             <div className="col-12">
               <label className="form-label fw-bold">Street Address <span className="text-danger">*</span></label>
-              <input type="text" className="form-control" name="street" value={formData.street} onChange={handleChange} required />
+              <input type="text" className="form-control" name="street" value={formData.street} onChange={handleChange} placeholder="e.g. 4400 University Drive" required />
             </div>
             <div className="col-md-4">
               <label className="form-label fw-bold">Zip Code <span className="text-danger">*</span></label>
-              <input type="text" className="form-control" name="zip" value={formData.zip} onChange={handleChange} required />
+              <input type="text" className="form-control" name="zip" value={formData.zip} onChange={handleChange} placeholder="e.g. 22030" required />
             </div>
             <div className="col-md-4">
               <label className="form-label fw-bold">City <span className="text-danger">*</span></label>
-              <input type="text" className="form-control" name="city" value={formData.city} onChange={handleChange} required />
+              <input type="text" className="form-control" name="city" value={formData.city} onChange={handleChange} placeholder="e.g. Fairfax" required />
             </div>
             <div className="col-md-4">
               <label className="form-label fw-bold">State <span className="text-danger">*</span></label>
-              <input type="text" className="form-control" name="state" value={formData.state} onChange={handleChange} maxLength="2" required />
+              <input type="text" className="form-control" name="state" value={formData.state} onChange={handleChange} maxLength="2" placeholder="e.g. VA" required />
             </div>
             <div className="col-md-6">
               <label className="form-label fw-bold">Telephone Number (XXX-XXX-XXXX) <span className="text-danger">*</span></label>
-              <input type="text" className="form-control" name="phone" value={formData.phone} onChange={handleChange} placeholder="301-325-8058" required />
+              <input type="text" className="form-control" name="phone" value={formData.phone} onChange={handleChange} placeholder="XXX-XXX-XXXX" required />
             </div>
             <div className="col-md-6">
               <label className="form-label fw-bold">Email (username@gmu.edu) <span className="text-danger">*</span></label>
-              <input type="email" className="form-control" name="email" value={formData.email} onChange={handleChange} placeholder="jkeetha@gmu.edu" required />
+              <input type="email" className="form-control" name="email" value={formData.email} onChange={handleChange} placeholder="jdoe@gmu.edu" required />
             </div>
             <div className="col-md-6">
               <label className="form-label fw-bold">Date of Survey <span className="text-danger">*</span></label>

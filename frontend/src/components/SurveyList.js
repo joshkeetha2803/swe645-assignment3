@@ -54,7 +54,7 @@ export default function SurveyList() {
                 <th>Interest</th>
                 <th>Recommendation</th>
                 <th>Comments</th>
-                <th style={{ minWidth: '140px' }}>Actions</th>
+                <th style={{ minWidth: '160px' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -75,8 +75,10 @@ export default function SurveyList() {
                   <td>{s.recommendationLikelihood}</td>
                   <td>{s.comments}</td>
                   <td>
-                    <Link to={`/edit/${s.id}`} className="btn btn-sm btn-mason-gold me-2 fw-bold">Update</Link>
-                    <button onClick={() => handleDelete(s.id)} className="btn btn-sm btn-danger fw-bold">Delete</button>
+                    <div className="d-flex flex-nowrap gap-2">
+                      <Link to={`/edit/${s.id}`} className="btn btn-sm btn-mason-gold fw-bold">Update</Link>
+                      <button onClick={() => handleDelete(s.id)} className="btn btn-sm btn-danger fw-bold">Delete</button>
+                    </div>
                   </td>
                 </tr>
               ))}
