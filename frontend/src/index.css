@@ -10,10 +10,26 @@ body {
     color: #000;
 }
 
-.bg-mason-green {
-    background-color: var(--gmu-green) !important;
+/* Home Page Welcome Card Style */
+.card-welcome {
+    border-top: 6px solid var(--gmu-yellow) !important;
 }
 
+/* Base GMU Green Button that turns Yellow on Hover */
+.btn-mason-green {
+    background-color: var(--gmu-green) !important;
+    color: white !important;
+    border: 2px solid var(--gmu-green) !important;
+    transition: all 0.3s ease;
+}
+
+.btn-mason-green:hover {
+    background-color: var(--gmu-yellow) !important;
+    color: var(--gmu-green) !important;
+    border-color: var(--gmu-yellow) !important;
+}
+
+/* Base GMU Yellow Button */
 .btn-mason-gold {
     background-color: var(--gmu-yellow) !important;
     color: var(--gmu-green) !important;
