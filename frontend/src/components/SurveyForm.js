@@ -15,7 +15,16 @@ export default function SurveyForm() {
     if (firstNameRef.current) firstNameRef.current.focus();
     if (id) {
       axios.get(`http://52.86.110.98:30081/api/surveys/${id}`)
-        .then(res => setFormData(res.data))
+        .then(res => {
+          const fetchedData = res.data;
+          // FIX: Convert the database string back into an array for the checkboxes
+          if (typeof fetchedData.likedMost === 'string') {
+            fetchedData.likedMost = fetchedData.likedMost 
+              ? fetchedData.likedMost.split(',').map(item => item.trim()) 
+              : [];
+          }
+          setFormData(fetchedData);
+        })
         .catch(err => console.error("Error loading survey:", err));
     }
   }, [id]);
@@ -23,9 +32,12 @@ export default function SurveyForm() {
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (type === 'checkbox') {
-      let updatedLiked = [...formData.likedMost];
-      if (checked) updatedLiked.push(value);
-      else updatedLiked = updatedLiked.filter(item => item !== value);
+      let updatedLiked = Array.isArray(formData.likedMost) ? [...formData.likedMost] : [];
+      if (checked) {
+        if (!updatedLiked.includes(value)) updatedLiked.push(value);
+      } else {
+        updatedLiked = updatedLiked.filter(item => item !== value);
+      }
       setFormData({ ...formData, likedMost: updatedLiked });
     } else {
       setFormData({ ...formData, [name]: value });
