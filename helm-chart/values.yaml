@@ -1,3 +1,7 @@
+#Team Members: Joshitha Keetha (G01575681) & Bhuvitha Tummala (G01576792)
+#Course: SWE 645
+#Purpose: It provides configuration values and image tags for the Helm templates.
+
 frontend:
   image: jkeetha28/swe645-frontend:latest
   replicas: 1

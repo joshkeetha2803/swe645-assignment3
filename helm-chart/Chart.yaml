@@ -1,3 +1,7 @@
+#Team Members: Joshitha Keetha (G01575681) & Bhuvitha Tummala (G01576792)
+#Course: SWE 645
+#Purpose: It defines the metadata and versioning for the Helm chart.
+
 apiVersion: v2
 name: student-survey-app
 description: A Helm chart for the SWE 645 Full Stack Application

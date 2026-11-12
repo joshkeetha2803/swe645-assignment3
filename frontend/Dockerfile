@@ -1,3 +1,7 @@
+#Team Members: Joshitha Keetha (G01575681) & Bhuvitha Tummala (G01576792)
+#Course: SWE 645
+#Purpose: This builds the React frontend application and serves it securely using an Nginx web server.
+
 # Stage 1: Build React App
 FROM node:18-alpine as build
 WORKDIR /app

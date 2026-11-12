@@ -1,3 +1,7 @@
+#Team Members: Joshitha Keetha (G01575681) & Bhuvitha Tummala (G01576792)
+#Course: SWE 645
+#Purpose: Lists the Python package dependencies required to run the backend application.
+
 fastapi
 uvicorn
 sqlmodel

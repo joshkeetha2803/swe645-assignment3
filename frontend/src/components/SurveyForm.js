@@ -1,15 +1,25 @@
+// Team Members: Joshitha Keetha (G01575681) & Bhuvitha Tummala (G01576792)
+// Course: SWE 645
+// Purpose: It provides a dynamic form for users to submit new surveys or update existing ones.
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default function SurveyForm() {
+
+  // Extract the survey ID from the URL parameters for updates
   const { id } = useParams();
   const navigate = useNavigate();
   const firstNameRef = useRef(null);
 
+  // Initialize state to hold all the survey form inputs
+
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', street: '', city: '', state: '', zip: '', phone: '', email: '', date: '', likedMost: [], interestSource: '', recommendationLikelihood: '', comments: ''
   });
+
+  // Trigger side effects like fetching backend data when the component mounts
 
   useEffect(() => {
     if (firstNameRef.current) firstNameRef.current.focus();
@@ -27,6 +37,8 @@ export default function SurveyForm() {
         .catch(err => console.error("Error loading survey:", err));
     }
   }, [id]);
+
+  // Handle input changes for text fields, dropdowns, and checkboxes
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -48,6 +60,8 @@ export default function SurveyForm() {
       firstName: '', lastName: '', street: '', city: '', state: '', zip: '', phone: '', email: '', date: '', likedMost: [], interestSource: '', recommendationLikelihood: '', comments: ''
     });
   };
+
+  // Perform client-side regex validation before submitting the form
 
   const validateForm = () => {
     let errors = [];

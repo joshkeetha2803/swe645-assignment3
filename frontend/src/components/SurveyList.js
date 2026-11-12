@@ -1,9 +1,17 @@
+// Team Members: Joshitha Keetha (G01575681) & Bhuvitha Tummala (G01576792)
+// Course: SWE 645
+// Purpose: It retrieves and displays all submitted surveys in a tabular format with CRUD actions.
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default function SurveyList() {
+
+  // Initialize state to hold the array of survey records
   const [surveys, setSurveys] = useState([]);
+
+  // Define function to fetch all survey records from the backend API
 
   const fetchSurveys = () => {
     axios.get('http://52.86.110.98:30081/api/surveys')
@@ -14,6 +22,8 @@ export default function SurveyList() {
   useEffect(() => {
     fetchSurveys();
   }, []);
+
+  // Handle the deletion of a specific survey record by ID
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this survey record?")) {
@@ -32,6 +42,8 @@ export default function SurveyList() {
         <h2 className="fw-bold" style={{ color: 'var(--gmu-green)' }}>All Survey Responses</h2>
         <Link to="/survey" className="btn btn-mason-green fw-bold shadow">Add New Survey</Link>
       </div>
+
+      // Display an informational message if no surveys exist yet
 
       {surveys.length === 0 ? (
         <div className="alert alert-info text-center py-4">No surveys recorded yet. Submit one to see it here!</div>
@@ -58,6 +70,8 @@ export default function SurveyList() {
               </tr>
             </thead>
             <tbody>
+
+              // Iterate over the surveys array and render a table row for each
               {surveys.map(s => (
                 <tr key={s.id}>
                   <td>{s.id}</td>

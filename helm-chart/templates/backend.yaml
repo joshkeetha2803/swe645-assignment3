@@ -1,8 +1,16 @@
+#Team Members: Joshitha Keetha (G01575681) & Bhuvitha Tummala (G01576792)
+#Course: SWE 645
+#Purpose: Kubernetes deployment and service definitions for the backend API.
+
 apiVersion: apps/v1
+
+# Define a Deployment resource to manage backend pods
 kind: Deployment
 metadata:
   name: backend-deployment
 spec:
+
+# Set the number of backend pod replicas dynamically from values.yaml
   replicas: {{ .Values.backend.replicas }}
   selector:
     matchLabels:
@@ -14,11 +22,15 @@ spec:
     spec:
       containers:
       - name: backend
+
+      # Pull the backend Docker image specified in values.yaml
         image: {{ .Values.backend.image }}
         ports:
         - containerPort: 8000
 ---
 apiVersion: v1
+
+# Define a Service resource to expose the backend pods
 kind: Service
 metadata:
   name: backend-service
@@ -29,4 +41,6 @@ spec:
   ports:
     - port: 8000
       targetPort: 8000
+
+      # Map the service to a specific NodePort dynamically
       nodePort: {{ .Values.backend.nodePort }}

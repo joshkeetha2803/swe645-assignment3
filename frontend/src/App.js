@@ -1,3 +1,7 @@
+// Team Members: Joshitha Keetha (G01575681) & Bhuvitha Tummala (G01576792)
+// Course: SWE 645
+// Purpose: It is the main entry point of the React app that handles frontend routing.
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';

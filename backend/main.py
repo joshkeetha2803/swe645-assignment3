@@ -1,3 +1,7 @@
+#Team Members: Joshitha Keetha (G01575681) & Bhuvitha Tummala (G01576792)
+#Course: SWE 645
+#Purpose: Implements the FastAPI backend CRUD operations and database initialization.
+
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import SQLModel, Field, Session, create_engine, select
@@ -6,7 +10,8 @@ from typing import Optional, List
 
 app = FastAPI(title="Student Survey API")
 
-# Enable CORS for React Frontend
+# Configures CORS to allow requests from the React frontend
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

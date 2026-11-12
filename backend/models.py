@@ -1,3 +1,7 @@
+#Team Members: Joshitha Keetha (G01575681) & Bhuvitha Tummala (G01576792)
+#Course: SWE 645
+#Purpose: It defines the database schema and data validation models for the survey.
+
 from typing import Optional
 from sqlmodel import Field, SQLModel
 from datetime import date
