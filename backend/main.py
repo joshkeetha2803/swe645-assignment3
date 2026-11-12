@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import SQLModel, Field, Session, create_engine, select
+from sqlalchemy import text
 from typing import Optional, List
 
 app = FastAPI(title="Student Survey API")
@@ -14,8 +15,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Database connection - Updated to AWS RDS MySQL
-DATABASE_URL = "mysql+pymysql://admin:xkKjVBi7p6r9PxMvxA1W@database-1.cfhpfm12kfjd.us-east-1.rds.amazonaws.com:3306/mysql"
+# 1. Connect to the MySQL server without specifying a database
+SERVER_URL = "mysql+pymysql://admin:xkKjVBi7p6r9PxMvxA1W@database-1.cfhpfm12kfjd.us-east-1.rds.amazonaws.com:3306"
+server_engine = create_engine(SERVER_URL, isolation_level="AUTOCOMMIT")
+
+# 2. Create our own dedicated database called survey_db if it doesn't exist
+with server_engine.connect() as conn:
+    conn.execute(text("CREATE DATABASE IF NOT EXISTS survey_db"))
+
+# 3. Now connect SQLModel to our new survey_db
+DATABASE_URL = f"{SERVER_URL}/survey_db"
 engine = create_engine(DATABASE_URL, echo=True)
 
 class Survey(SQLModel, table=True):
