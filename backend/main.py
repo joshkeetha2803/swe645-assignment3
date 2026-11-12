@@ -14,8 +14,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Database connection
-DATABASE_URL = "sqlite:///./surveys.db"
+# Database connection - Updated to AWS RDS MySQL
+DATABASE_URL = "mysql+pymysql://admin:xkKjVBi7p6r9PxMvxA1W@database-1.cfhpfm12kfjd.us-east-1.rds.amazonaws.com:3306/mysql"
 engine = create_engine(DATABASE_URL, echo=True)
 
 class Survey(SQLModel, table=True):
