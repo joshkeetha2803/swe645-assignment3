@@ -12,7 +12,6 @@ export default function SurveyList() {
   const [surveys, setSurveys] = useState([]);
 
   // Define function to fetch all survey records from the backend API
-
   const fetchSurveys = () => {
     axios.get('http://52.86.110.98:30081/api/surveys')
       .then(res => setSurveys(res.data))
@@ -24,7 +23,6 @@ export default function SurveyList() {
   }, []);
 
   // Handle the deletion of a specific survey record by ID
-
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this survey record?")) {
       axios.delete(`http://52.86.110.98:30081/api/surveys/${id}`)
@@ -43,8 +41,7 @@ export default function SurveyList() {
         <Link to="/survey" className="btn btn-mason-green fw-bold shadow">Add New Survey</Link>
       </div>
 
-      // Display an informational message if no surveys exist yet
-
+      {/* Display an informational message if no surveys exist yet */}
       {surveys.length === 0 ? (
         <div className="alert alert-info text-center py-4">No surveys recorded yet. Submit one to see it here!</div>
       ) : (
@@ -70,8 +67,7 @@ export default function SurveyList() {
               </tr>
             </thead>
             <tbody>
-
-              // Iterate over the surveys array and render a table row for each
+              {/* Iterate over the surveys array and render a table row for each */}
               {surveys.map(s => (
                 <tr key={s.id}>
                   <td>{s.id}</td>
